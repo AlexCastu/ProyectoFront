@@ -169,12 +169,14 @@ window.addEventListener('load', () => {
       element.addEventListener('click', () => {
         if (correcta[id] === element.value) {
           element.style.boxShadow = '0px 0px 10px 0px green';
+          document.querySelectorAll('.opcionRespuestas').forEach((boton) => (boton.disabled = true));
           setTimeout(() => {
             validarRespuesta(correcta[id], element.value, id);
             mostrarTodoPorPantalla(pregunta, respuesta, correcta, id);
           }, 500);
         } else {
           element.style.boxShadow = '0px 0px 10px 0px red';
+          document.querySelectorAll('.opcionRespuestas').forEach((boton) => (boton.disabled = true));
           setTimeout(() => {
             validarRespuesta(correcta[id], element.value, id);
             mostrarTodoPorPantalla(pregunta, respuesta, correcta, id);
@@ -186,6 +188,7 @@ window.addEventListener('load', () => {
 
   const validarRespuesta = (correcta, respuesta, id) => {
     let numeroPregunta = document.querySelectorAll('.numeroPreguntas');
+
     if (correcta === respuesta) {
       numeroPregunta[id].style.boxShadow = '0px 0px 10px 0px green';
       localStorage.Acertados++;
