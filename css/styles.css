@@ -5,7 +5,6 @@
 #wrapper {
   background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
   font-family: sans-serif;
-  height: 100vh;
 }
 #titulo {
   background-color: #ff3cac;
@@ -34,18 +33,22 @@
   margin-top: 0px;
   padding: 5px 0px 5px;
   width: 50%;
-  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  background-color: white;
   border: none;
-  border: 1px solid black;
+  cursor: pointer;
 }
 #opcionesLocalStorage img {
   width: 25px;
+}
+#opcionesLocalStorage button:hover {
+  background-color: rgb(235, 235, 235);
 }
 #contenedorMain {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding-bottom: 100px;
 }
 #contenedorTituloCategorias h2 {
   font-weight: 300;
@@ -131,9 +134,9 @@
 #intermediarioSeleccionCategoria button {
   background-color: #0093e9;
   background-image: linear-gradient(160deg, #bbbbbb 0%, #ffffff 100%);
+  box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0);
   border-radius: 10px;
   border: 1px solid rgb(0, 0, 0);
-  border: none;
   cursor: pointer;
   font-size: 1.3rem;
   font-weight: 200;
@@ -261,33 +264,67 @@
   display: flex;
   flex-direction: column-reverse;
   gap: 20px;
-  justify-content: center;
   background-color: rgb(249, 249, 249);
   align-items: center;
-  max-width: 500px;
+  max-width: 700px;
   width: 90%;
   font-size: 1.3rem;
-  padding: 20px 20px;
   margin: 40px 40px;
   border-radius: 10px;
   text-align: center;
   box-shadow: 0px 0px 5px rgb(190, 54, 54);
 }
+
 #contenedorSesionesAnteriores h2 {
   color: #0093e9;
   font-weight: 400;
   padding-bottom: 10px;
   width: 90%;
-  border-bottom: 1px solid lightgray;
 }
-#contenedorSesionesAnteriores div {
+#contenedorSesionesAnteriores > div {
   align-items: center;
   display: flex;
+  width: 90%;
   flex-direction: row;
-  justify-content: space-evenly;
-  width: 100%;
   padding: 5px 5px;
+  justify-content: space-around;
+  gap: 50px;
+  text-align: center;
+  margin-bottom: 20px;
 }
+#contenedorSesionesAnteriores > div > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 33%;
+}
+
 #contenedorSesionesAnteriores div img {
   width: 25px;
+}
+#titulosCategorias {
+  border-bottom: 1px solid lightgray;
+  font-weight: 100;
+}
+#contenedorFecha {
+  font-weight: 100;
+}
+#botonSalirLocalStorage {
+  display: flex;
+  border: none;
+  background-color: rgb(249, 249, 249);
+  padding: 5px;
+}
+
+#pfecha {
+  font-size: 1rem;
+  padding: 2px;
+}
+
+#botonSalirLocalStorage:hover {
+  box-shadow: 0px 0px 3px 0px gray;
+  border-radius: 100%;
+  cursor: pointer;
 }
