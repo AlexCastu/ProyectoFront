@@ -28,7 +28,9 @@ window.addEventListener('load', () => {
     seleccionarCategoria(13);
   });
 
-  document.getElementById('botonVerHistorial').addEventListener('click', () => mostrarResultadosLocalStorage());
+  document
+    .getElementById('botonVerHistorial')
+    .addEventListener('click', () => mostrarResultadosLocalStorage());
 
   document.getElementById('botonBorrarHistorial').addEventListener('click', () => {
     localStorage.removeItem('SesionesAnterioresPreguntas');
@@ -56,27 +58,33 @@ const mostrarIntro = (id_categoria) => {
     botonEmpezar.style.backgroundImage = ' linear-gradient(to top, #9890e3 0%, #b1f4cf 100%)';
     wrapper.style.backgroundImage = ' linear-gradient(to top, #9890e3 0%, #b1f4cf 100%)';
     wrapper.style.height = '100vh';
-    texto.innerHTML = 'Has elegido la categoria de Informatica! Si estas preparado para este reto dale a jugar! ';
+    texto.innerHTML =
+      'Has elegido la categoria de Informatica! Si estas preparado para este reto dale a jugar! ';
   } else if (id_categoria === 11) {
     botonEmpezar.style.backgroundImage = 'linear-gradient(to top, #ebc0fd 0%, #d9ded8 100%)';
     wrapper.style.backgroundImage = ' linear-gradient(to top, #ebc0fd 0%, #d9ded8 100%)';
     wrapper.style.height = '100vh';
-    texto.innerHTML = 'Has elegido la categoria de Cine! Demuestra que eres un autentico cinefilo! ';
+    texto.innerHTML =
+      'Has elegido la categoria de Cine! Demuestra que eres un autentico cinefilo! ';
   } else if (id_categoria === 12) {
     botonEmpezar.style.backgroundImage = 'linear-gradient(to top, #96fbc4 0%, #f9f586 100%)';
     wrapper.style.backgroundImage = ' linear-gradient(to top, #96fbc4 0%, #f9f586 100%)';
     wrapper.style.height = '100vh';
-    texto.innerHTML = 'Has elegido la categoria de Musica! Mozart?...Beethoven?... o quizas Motomami??  te atreves con estas preguntas? Dale al Play! ';
+    texto.innerHTML =
+      'Has elegido la categoria de Musica! Mozart?...Beethoven?... o quizas Motomami??  te atreves con estas preguntas? Dale al Play! ';
   } else if (id_categoria === 10) {
     botonEmpezar.style.backgroundImage = ' linear-gradient(180deg, #2af598 0%, #009efd 100%)';
     wrapper.style.backgroundImage = ' linear-gradient(180deg, #2af598 0%, #009efd 100%)';
     wrapper.style.height = '100vh';
     texto.innerHTML = 'Te la vas a jugar a temas aleatorios? eres todo un intrepido!';
   } else {
-    botonEmpezar.style.backgroundImage = ' linear-gradient(180deg,#FFA611 0% ,#F5820D 50%, #FFCB2B 100%)';
-    wrapper.style.backgroundImage = ' linear-gradient(180deg,#FFA611 0% ,#F5820D 50%, #FFCB2B 100%)';
+    botonEmpezar.style.backgroundImage =
+      ' linear-gradient(180deg,#FFA611 0% ,#F5820D 50%, #FFCB2B 100%)';
+    wrapper.style.backgroundImage =
+      ' linear-gradient(180deg,#FFA611 0% ,#F5820D 50%, #FFCB2B 100%)';
     wrapper.style.height = '100vh';
-    texto.innerHTML = 'Te atreves con unas preguntas sobre el espacio?  Son preguntas elegidas desde Firebase!';
+    texto.innerHTML =
+      'Te atreves con unas preguntas sobre el espacio?  Son preguntas elegidas desde Firebase!';
   }
 
   botonEmpezar.innerHTML = 'Juega ahora!';
@@ -125,7 +133,8 @@ const enCasoDeFallarFetch = () => {
   botonVolverAHome.id = 'botonVolverAHome';
   let img = document.createElement('img');
   img.src = './img/home.gif';
-  parrafoError.innerHTML = 'Parece que el Fetch ha fallado, porfavor vuelve a intentarlo de nuevo, dale sobre el boton que ves mas abajo y asi podras volver al inicio.';
+  parrafoError.innerHTML =
+    'Parece que el Fetch ha fallado, por favor vuelve a intentarlo de nuevo, dale sobre el boton que ves mas abajo y asi podras volver al inicio.';
   botonVolverAHome.append(img);
   contenedor.append(tituloFallo, parrafoError, botonVolverAHome);
   document.getElementById('contenedorMain').append(contenedor);
@@ -181,11 +190,11 @@ const mostrarCard = (pregunta, respuesta, correcta, id) => {
   if (id < 10) {
     numeroPregunta[id].style.boxShadow = '0px 0px 10px 0px black';
     let seccion = document.createElement('section');
-    ////
+
     let botonAbandonar = document.createElement('button');
     botonAbandonar.innerText = 'Anular Sesion';
     botonAbandonar.id = 'anularPrueba';
-    ////
+
     seccion.id = 'seccionPreguntas';
     seccion.append(botonAbandonar);
     let resp = document.createElement('p');
@@ -275,7 +284,9 @@ const mostrarResultado = () => {
 };
 
 const mostrarResultadosLocalStorage = () => {
-  document.getElementById('contenedorSesionesAnteriores') ? document.getElementById('contenedorSesionesAnteriores').remove() : null;
+  document.getElementById('contenedorSesionesAnteriores')
+    ? document.getElementById('contenedorSesionesAnteriores').remove()
+    : null;
 
   // comporobar local Host
   let datos = localStorage.getItem('SesionesAnterioresPreguntas');
@@ -381,8 +392,8 @@ const guardarDatosLocalStorage = () => {
       horas,
     };
     local.push(guardar);
-    let objAguardar = JSON.stringify(local);
-    localStorage.setItem('SesionesAnterioresPreguntas', objAguardar);
+    let objAGuardar = JSON.stringify(local);
+    localStorage.setItem('SesionesAnterioresPreguntas', objAGuardar);
   } else {
     let aciertos = localStorage.Acertados;
     let fecha = guardarFecha();
@@ -444,6 +455,7 @@ const verGrafica = () => {
         return 'Firebase';
       }
     });
+
     colores = datos.map((element) => {
       return element.aciertos >= 5 ? 'rgba(15, 148, 8) ' : 'rgba(225, 48, 48)';
     });
@@ -478,6 +490,6 @@ const verGrafica = () => {
   document.getElementById('contenedorSesionesAnteriores').appendChild(div);
   const myChart = new Chart(document.getElementById('myChart'), config);
 };
-///////////////////////////////
+
 
 export { mostrarPreguntasYRespuestas };

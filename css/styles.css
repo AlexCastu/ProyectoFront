@@ -8,9 +8,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   font-family: sans-serif;
-  height: 100%;
+  height: 100vh;
   width: 100%;
-  position: absolute;
 }
 #titulo {
   background-color: #ff3cac;
@@ -419,4 +418,79 @@
   box-shadow: 0px 0px 3px 0px gray;
   border-radius: 100%;
   cursor: pointer;
+}
+
+.divRegistros {
+  display: flex;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  padding: 50px;
+  flex-direction: column;
+  gap: 30px;
+  border-radius: 10px;
+  width: 30%;
+  min-width: 300px;
+  box-shadow: 0px 0px 10px 0px black;
+}
+.divRegistros h1 {
+  font-size: 2rem;
+  font-weight: 100;
+  border-bottom: 1px solid gray;
+  width: 80%;
+  text-align: center;
+  padding-bottom: 5px;
+}
+.formulariosRegistros {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.formulariosRegistros label {
+  font-size: 1.3rem;
+  margin-top: 10px;
+  font-weight: 100;
+  color: white;
+}
+
+.formulariosRegistros input {
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  border-bottom: 2px solid rgb(0, 140, 255);
+  font-size: 1.1rem;
+  font-weight: 100;
+  margin-top: 15px;
+  outline: none;
+  padding: 5px;
+  text-align: center;
+}
+
+#cajabotonesIniciarSesion {
+  display: flex;
+  gap: 15px;
+  margin-top: 40px;
+}
+.botonesIniciioSesion {
+  margin-top: 30px;
+  padding: 5px;
+  width: 100%;
+  border: none;
+  background-color: #ffd04f;
+  color: rgb(0, 0, 0);
+  font-size: 1rem;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 0px black;
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+.botonesIniciioSesion:hover {
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.claseDisplayFlex{
+  display: flex;
+}
+.claseDisplayNone{
+  display: none;
 }
