@@ -1,7 +1,8 @@
 import { iniciarFireBase } from './firebase.js';
 import { mostrarDatosUserFirebase } from './usuario.js';
-import { escribirPuntuacion } from './puntuaciones.js';
+import { escribirPuntuacion,borrarHistorial } from './puntuaciones.js';
 import { mostrarPuntuacionesUser } from './mostrarPuntuaciones.js';
+import { mostrarUsariosFirebase } from "./mostrarDatosUser.js";
 let cat;
 window.addEventListener('load', () => {
 	if (!localStorage.Acertados) {
@@ -66,8 +67,10 @@ window.addEventListener('load', () => {
 	document
 		.getElementById('botonBorrarHistorial')
 		.addEventListener('click', () => {
-			localStorage.removeItem('SesionesAnterioresPreguntas');
-			location.reload();
+			borrarHistorial()
+		});
+		document.getElementById("usuarioFirebase").addEventListener('click',()=>{
+			mostrarUsariosFirebase()
 		});
 	document.getElementById('botonCerrarSesion').addEventListener('click', () => {
 		localStorage.removeItem('user');

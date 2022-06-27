@@ -5,5 +5,5 @@
   "prettier.useTabs": true,
   "prettier.vueIndentScriptAndStyle": false,
   "prettier.withNodeModules": true,
-  "prettier.semi": true
+  "prettier.semi": false
 }

@@ -29,13 +29,10 @@ const mostrarPuntuaciones = (data) => {
 	document.getElementById('contenedorSesionesAnteriores')
 		? document.getElementById('contenedorSesionesAnteriores').remove()
 		: null;
-
 	// comporobar local Host
-
 	if (data) {
-		console.log(data);
+		const keys = Object.keys(data);
 		data.length > 5 ? (data = data.slice(-5)) : null;
-
 		// div titulo y boton
 		const contenedorTitulo = document.createElement('div');
 		contenedorTitulo.id = 'contenedorTitulo';
@@ -67,7 +64,8 @@ const mostrarPuntuaciones = (data) => {
 		tiempo.title = 'Fecha y Hora';
 		divTitulo.append(pAciertos, pCategoria, tiempo);
 
-		[...data].forEach((element) => {
+		keys.forEach((objeto) => {
+		 	let element = data[objeto];
 			let divEach = document.createElement('div');
 			divEach.className = 'sesiones';
 			let divAciertos = document.createElement('div');
@@ -115,7 +113,7 @@ const mostrarPuntuaciones = (data) => {
 		padre.insertBefore(div, referencia);
 
 		inciarBoton();
-		verGrafica();
+		verGrafica(keys,data);
 	} else {
 		alert('No hay ninguna sesion guardada');
 	}
@@ -131,71 +129,69 @@ const inciarBoton = () => {
 		});
 };
 
-const verGrafica = () => {
-	const div = document.createElement('div');
-	div.id = 'contenedorGrafica';
-	const canvas = document.createElement('canvas');
-	canvas.id = 'myChart';
-	canvas.style.width = '400px';
-	div.append(canvas);
+const verGrafica = (keys, datosFirebase) => {
+  const div = document.createElement("div");
+  div.id = "contenedorGrafica";
+  const canvas = document.createElement("canvas");
+  canvas.id = "myChart";
+  canvas.style.width = "400px";
+  div.append(canvas);
 
-	let datos = localStorage.getItem('SesionesAnterioresPreguntas');
-	datos = JSON.parse(datos);
+  let puntuaciones;
+  let categoria;
+  let colores;
 
-	let puntuaciones;
-	let categoria;
-	let colores;
+  if (keys.length > 0) {
+    puntuaciones = keys.map((element) => {
+      return datosFirebase[element].aciertos;
+    });
+    categoria = keys.map((elemento) => {
+		let element = datosFirebase[elemento].cat;
+      if (element.cat === 18) {
+        return "Informatica";
+      } else if (element.cat === 11) {
+        return "Cine";
+      } else if (element.cat === 12) {
+        return "Musica";
+      } else if (element.cat === 10) {
+        return "Aleatoria";
+      } else {
+        return "Firebase";
+      }
+    });
 
-	if (datos.length > 0) {
-		puntuaciones = datos.map((element) => {
-			return element.aciertos;
-		});
-		categoria = datos.map((element) => {
-			if (element.cat === 18) {
-				return 'Informatica';
-			} else if (element.cat === 11) {
-				return 'Cine';
-			} else if (element.cat === 12) {
-				return 'Musica';
-			} else if (element.cat === 10) {
-				return 'Aleatoria';
-			} else {
-				return 'Firebase';
-			}
-		});
+    colores = keys.map((element) => {
+       return datosFirebase[element].aciertos >= 5 ? "rgba(15, 148, 8) " : "rgba(225, 48, 48)";
+    });
+  }
 
-		colores = datos.map((element) => {
-			return element.aciertos >= 5 ? 'rgba(15, 148, 8) ' : 'rgba(225, 48, 48)';
-		});
-	}
+  const data = {
+    labels: categoria,
+    datasets: [
+      {
+        label: "Fallos",
+        backgroundColor: colores,
+        borderColor: "rgb(255, 99, 132)",
+        data: puntuaciones,
+      },
+    ],
+  };
 
-	const data = {
-		labels: categoria,
-		datasets: [
-			{
-				label: 'Fallos',
-				backgroundColor: colores,
-				borderColor: 'rgb(255, 99, 132)',
-				data: puntuaciones,
-			},
-		],
-	};
+  const config = {
+    type: "bar",
+    data: data,
+    options: {
+      min: 0,
+      max: 10,
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  };
 
-	const config = {
-		type: 'bar',
-		data: data,
-		options: {
-			min: 0,
-			max: 10,
-			scales: {
-				y: {
-					beginAtZero: true,
-				},
-			},
-		},
-	};
-
-	document.getElementById('contenedorSesionesAnteriores').appendChild(div);
-	const myChart = new Chart(document.getElementById('myChart'), config);
+  document.getElementById("contenedorSesionesAnteriores").appendChild(div);
+  const myChart = new Chart(document.getElementById("myChart"), config);
 };
 export { mostrarPuntuacionesUser };

@@ -8,6 +8,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   font-family: sans-serif;
   height: 100vh;
   width: 100%;
@@ -15,7 +16,12 @@
 
 #titulo {
   background-color: #ff3cac;
-  background-image: linear-gradient(225deg, #ff3cac 0%, #784ba0 50%, #2b86c5 100%);
+  background-image: linear-gradient(
+    225deg,
+    #ff3cac 0%,
+    #784ba0 50%,
+    #2b86c5 100%
+  );
   box-shadow: 0px 0px 10px 0px black;
   color: white;
   font-size: 5rem;
@@ -34,11 +40,9 @@
   align-items: center;
   padding: 7px 0px;
 
-
   box-shadow: 0px 0px 10px 0px rgb(0, 0, 0);
   margin-bottom: 100px;
 }
-
 
 #opcionesLocalStorage button {
   align-items: center;
@@ -69,7 +73,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-bottom: 100px;
+  padding-bottom: 10px;
 }
 
 #contenedorTituloCategorias h2 {
@@ -102,7 +106,7 @@
 #contenedorArticulosCategorias article {
   border-radius: 15px;
   box-shadow: 0px 0px 10px rgb(203, 203, 203);
-  max-width: 250px;
+  max-width: 200px;
   min-width: 150px;
   width: 100%;
 }
@@ -114,15 +118,54 @@
   align-items: center;
   gap: 20px;
   width: 100%;
-
   padding: 10px;
   min-height: 300px;
-  font-size: 2.5rem;
+  font-size: 2rem;
   border: none;
   cursor: pointer;
   border-radius: 15px;
 }
+@media (max-width: 450px) {
+  #seccionCategorias {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  }
 
+  #contenedorArticulosCategorias {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+  }
+
+  #contenedorArticulosCategorias article {
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgb(203, 203, 203);
+    max-width: none;
+    width: 100%;
+  }
+
+  #contenedorArticulosCategorias article button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    padding: 10px;
+    font-size: 2rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+  }
+}
+#contenedorArticulosCategorias article button img {
+  width: 50px;
+}
 #contenedorArticulosCategorias article:hover {
   box-shadow: 0px 0px 20px rgb(0, 0, 0);
 }
@@ -538,11 +581,54 @@
   border: 1px solid black;
   cursor: pointer;
 }
-
-.claseDisplayFlex {
-  display: flex;
+#wrapperModal {
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.689);
+  width: 100%;
+  height: 100%;
+  display: none;
 }
 
-.claseDisplayNone {
-  display: none;
+#modal {
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  flex-direction: column;
+  padding: 20px;
+  width: 30%;
+  border-radius: 10px;
+  min-width: 300px;
+  gap: 10px;
+  z-index: 100;
+  top: 0;
+  margin: auto;
+}
+#divTituloModal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#divTituloModal img {
+  width: 20px;
+  height: 20px;
+  background-color: rgb(253, 132, 132);
+  padding: 5px;
+  border-radius: 50%;
+}
+#divTituloModal img:hover {
+  box-shadow: 0px 0px 5px gray;
+  cursor: pointer;
+  background-color: rgb(231, 231, 231);
+}
+#divTituloModal h1 {
+  font-weight: 100;
+  margin-bottom: 20px;
+}
+
+.divParrafo {
+  border-bottom: 1px solid rgb(206, 206, 206);
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  justify-content: space-between;
 }
